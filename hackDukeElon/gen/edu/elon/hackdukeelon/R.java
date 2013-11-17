@@ -38,7 +38,6 @@ public final class R {
         public static final int del1=0x7f09000a;
         public static final int invokeButton=0x7f090009;
         public static final int license=0x7f09000c;
-        public static final int list=0x7f090001;
         public static final int mergeButton=0x7f090002;
         public static final int musicButton=0x7f090003;
         public static final int purchase=0x7f09000f;
@@ -49,19 +48,22 @@ public final class R {
         public static final int showFileTitle2=0x7f090013;
         public static final int showFiletextView1=0x7f090016;
         public static final int showLastRunLogButton=0x7f09000b;
+        public static final int songs=0x7f090001;
         public static final int space1=0x7f09000e;
         public static final int startDemoAct=0x7f09000d;
     }
     public static final class layout {
         public static final int about_dialog=0x7f030000;
         public static final int activity_main=0x7f030001;
-        public static final int contact_us_dialog=0x7f030002;
-        public static final int ffmpeg_demo_client2=0x7f030003;
-        public static final int remoteserviceclient=0x7f030004;
-        public static final int show_file=0x7f030005;
+        public static final int activity_song_picker=0x7f030002;
+        public static final int contact_us_dialog=0x7f030003;
+        public static final int ffmpeg_demo_client2=0x7f030004;
+        public static final int remoteserviceclient=0x7f030005;
+        public static final int show_file=0x7f030006;
     }
     public static final class menu {
         public static final int main=0x7f080000;
+        public static final int song_picker=0x7f080001;
     }
     public static final class raw {
         public static final int song=0x7f040000;
@@ -109,6 +111,7 @@ public final class R {
         public static final int startButton=0x7f050002;
         public static final int startDemoAct=0x7f05000b;
         public static final int stopButton=0x7f050003;
+        public static final int title_activity_song_picker=0x7f05002f;
         public static final int trascoding_running_background_message=0x7f05002a;
         public static final int trascoding_running_message=0x7f050029;
         public static final int ui_ok=0x7f050014;

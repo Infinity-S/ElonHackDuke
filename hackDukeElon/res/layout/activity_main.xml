@@ -9,7 +9,7 @@
     tools:context=".MainActivity" >
 
     <ListView
-        android:id="@+id/list"
+        android:id="@+id/songs"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_above="@+id/mergeButton"

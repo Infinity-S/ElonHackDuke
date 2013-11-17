@@ -44,6 +44,8 @@ import android.widget.Toast;
 import com.netcompss.ffmpeg4android_client.BaseWizard;
 
 public class MainActivity extends BaseWizard {
+	private Bundle recivedBundle; 
+	
 	private final int CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE = 200;
 	public final int MEDIA_TYPE_IMAGE = 1;
 	public final int MEDIA_TYPE_VIDEO = 2;
@@ -67,11 +69,13 @@ public class MainActivity extends BaseWizard {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		songSegements = (ListView) findViewById(R.id.list);
+		songSegements = (ListView) findViewById(R.id.songs);
 		songSegements.setOnItemClickListener(clickListener);
 		songSegements.setOnItemLongClickListener(longClickListener);  
 
-
+		recivedBundle = this.getIntent().getExtras(); 
+		
+		makeClipList(recivedBundle.getStringArrayList("durationsStr")); 
 
 		copyLicenseAndDemoFilesFromAssetsToSDIfNeeded();
 
@@ -119,6 +123,12 @@ public class MainActivity extends BaseWizard {
 
 		updateList();
 
+	}
+	
+	public void makeClipList(ArrayList<String> clipStr) {
+		for(String s : clipStr) {
+			clipList.add(new Clip(Integer.parseInt(s))); 
+		}
 	}
 
 	public void showDialog(String title, String message) {
@@ -199,7 +209,7 @@ public class MainActivity extends BaseWizard {
 			String path = clipList.get(position).getPath(); 
 			if(clipList.get(position).isRecorded()) {
 				Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(path));
-				intent.setDataAndType(Uri.parse(path), "video/mp4");
+				intent.setDataAndType(Uri.parse(path.substring(0, path.length()-4)), "video/mp4");
 				startActivity(intent);
 			} else {
 				//Toast.makeText(getApplicationContext(), "Cannot Preview File. You haven't recorded one yet!", Toast.LENGTH_SHORT).show();
@@ -211,14 +221,14 @@ public class MainActivity extends BaseWizard {
 	};
 
 	private void updateList() { 
-		if(clipList.size() < 1) {
-			clipList.add(new Clip(5, "Empty Clip")); 
-			clipList.add(new Clip(10, "Empty Clip")); 
-			clipList.add(new Clip(15, "Empty Clip")); 
-			clipList.add(new Clip(5, "Empty Clip")); 
-			clipList.add(new Clip(10, "Empty Clip")); 
-			clipList.add(new Clip(15, "Empty Clip")); 
-		}
+//		if(clipList.size() < 1) {
+//			clipList.add(new Clip(5, "Empty Clip")); 
+//			clipList.add(new Clip(10, "Empty Clip")); 
+//			clipList.add(new Clip(15, "Empty Clip")); 
+//			clipList.add(new Clip(5, "Empty Clip")); 
+//			clipList.add(new Clip(10, "Empty Clip")); 
+//			clipList.add(new Clip(15, "Empty Clip")); 
+//		}
 		boolean enable = true; 
 		ArrayList<String> clipNames = new ArrayList<String>(); 
 		for(Clip c : clipList) {
