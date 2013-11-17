@@ -15,7 +15,7 @@ public class MainActivity extends BaseWizard {
 	}
 	
 	/**
-	 * Thomas needs his own Javadoc, because he is great.
+	 * Thomas needs his own Javadoc, because he is great!
 	 * 
 	 * @param greatness
 	 * @return moreGreatness
