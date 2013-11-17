@@ -13,7 +13,20 @@ public class MainActivity extends BaseWizard {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 	}
-
+	
+	/**
+	 * Thomas needs his own Javadoc, because he is great.
+	 * 
+	 * @param greatness
+	 * @return moreGreatness
+	 */
+	/*
+	 * public moreGreatness thomasMethod(Greatness g){
+	 * 	return g+1;
+	 * }
+	 */
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
