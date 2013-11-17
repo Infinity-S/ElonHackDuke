@@ -4,6 +4,7 @@ int drawable bg 0x7f020000
 int drawable ic_launcher 0x7f020001
 int drawable icon 0x7f020002
 int drawable notification_icon 0x7f020003
+<<<<<<< HEAD
 int id CommandText 0x7f090007
 int id CommandTextView 0x7f090006
 int id ScrollView01 0x7f090005
@@ -34,6 +35,41 @@ int layout ffmpeg_demo_client2 0x7f030003
 int layout remoteserviceclient 0x7f030004
 int layout show_file 0x7f030005
 int menu main 0x7f080000
+=======
+int id CommandText 0x7f090008
+int id CommandTextView 0x7f090007
+int id ScrollView01 0x7f090006
+int id aboutButton 0x7f090011
+int id about_content 0x7f090000
+int id action_settings 0x7f090017
+int id contactButton 0x7f090010
+int id contact_us_content 0x7f090005
+int id del1 0x7f09000a
+int id invokeButton 0x7f090009
+int id license 0x7f09000c
+int id mergeButton 0x7f090002
+int id musicButton 0x7f090003
+int id purchase 0x7f09000f
+int id removeAudio 0x7f090004
+int id showFileDone 0x7f090014
+int id showFileSend 0x7f090015
+int id showFileTitle1 0x7f090012
+int id showFileTitle2 0x7f090013
+int id showFiletextView1 0x7f090016
+int id showLastRunLogButton 0x7f09000b
+int id songs 0x7f090001
+int id space1 0x7f09000e
+int id startDemoAct 0x7f09000d
+int layout about_dialog 0x7f030000
+int layout activity_main 0x7f030001
+int layout activity_song_picker 0x7f030002
+int layout contact_us_dialog 0x7f030003
+int layout ffmpeg_demo_client2 0x7f030004
+int layout remoteserviceclient 0x7f030005
+int layout show_file 0x7f030006
+int menu main 0x7f080000
+int menu song_picker 0x7f080001
+>>>>>>> v1
 int raw song 0x7f040000
 int string FfmpegStatus 0x7f050009
 int string RemoteProcessStatus 0x7f050008
@@ -77,6 +113,10 @@ int string show_logs 0x7f050028
 int string startButton 0x7f050002
 int string startDemoAct 0x7f05000b
 int string stopButton 0x7f050003
+<<<<<<< HEAD
+=======
+int string title_activity_song_picker 0x7f05002f
+>>>>>>> v1
 int string trascoding_running_background_message 0x7f05002a
 int string trascoding_running_message 0x7f050029
 int string ui_ok 0x7f050014

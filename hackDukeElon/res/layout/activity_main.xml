@@ -9,7 +9,11 @@
     tools:context=".MainActivity" >
 
     <ListView
+<<<<<<< HEAD
         android:id="@+id/list"
+=======
+        android:id="@+id/songs"
+>>>>>>> v1
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_above="@+id/mergeButton"
@@ -26,12 +30,18 @@
         android:id="@+id/musicButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_below="@+id/list"
         android:layout_toRightOf="@+id/mergeButton"
+=======
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+>>>>>>> v1
         android:text="Add Music" />
 
     <Button
         android:id="@+id/mergeButton"
+<<<<<<< HEAD
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/list"
@@ -39,5 +49,22 @@
         android:layout_marginBottom="30dp"
         android:layout_marginLeft="18dp"
         android:text="Merge Videos" />
+=======
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/musicButton"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="33dp"
+        android:text="Merge Videos" />
+
+    <Button
+        android:id="@+id/removeAudio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/mergeButton"
+        android:layout_alignBottom="@+id/mergeButton"
+        android:layout_alignParentRight="true"
+        android:text="Remove Audio" />
+>>>>>>> v1
 
 </RelativeLayout>

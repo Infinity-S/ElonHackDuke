@@ -13,6 +13,7 @@ public final class R {
 		public static final int notification_icon = 0x7f020003;
 	}
 	public static final class id {
+<<<<<<< HEAD
 		public static final int CommandText = 0x7f090007;
 		public static final int CommandTextView = 0x7f090006;
 		public static final int ScrollView01 = 0x7f090005;
@@ -39,6 +40,34 @@ public final class R {
 		public static final int ffmpeg_demo_client2 = 0x7f030003;
 		public static final int remoteserviceclient = 0x7f030004;
 		public static final int show_file = 0x7f030005;
+=======
+		public static final int CommandText = 0x7f090008;
+		public static final int CommandTextView = 0x7f090007;
+		public static final int ScrollView01 = 0x7f090006;
+		public static final int aboutButton = 0x7f090011;
+		public static final int about_content = 0x7f090000;
+		public static final int contactButton = 0x7f090010;
+		public static final int contact_us_content = 0x7f090005;
+		public static final int del1 = 0x7f09000a;
+		public static final int invokeButton = 0x7f090009;
+		public static final int license = 0x7f09000c;
+		public static final int purchase = 0x7f09000f;
+		public static final int showFileDone = 0x7f090014;
+		public static final int showFileSend = 0x7f090015;
+		public static final int showFileTitle1 = 0x7f090012;
+		public static final int showFileTitle2 = 0x7f090013;
+		public static final int showFiletextView1 = 0x7f090016;
+		public static final int showLastRunLogButton = 0x7f09000b;
+		public static final int space1 = 0x7f09000e;
+		public static final int startDemoAct = 0x7f09000d;
+	}
+	public static final class layout {
+		public static final int about_dialog = 0x7f030000;
+		public static final int contact_us_dialog = 0x7f030003;
+		public static final int ffmpeg_demo_client2 = 0x7f030004;
+		public static final int remoteserviceclient = 0x7f030005;
+		public static final int show_file = 0x7f030006;
+>>>>>>> v1
 	}
 	public static final class string {
 		public static final int FfmpegStatus = 0x7f050009;
