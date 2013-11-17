@@ -8,9 +8,44 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <TextView
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/mergeButton"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:animateLayoutChanges="true"
+        android:background="#2AA7F5"
+        android:fadeScrollbars="false"
+        android:scrollbarStyle="outsideOverlay" >
+
+    </ListView>
+
+    <Button
+        android:id="@+id/musicButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Add Music" />
+
+    <Button
+        android:id="@+id/mergeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/musicButton"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="33dp"
+        android:text="Merge Videos" />
+
+    <Button
+        android:id="@+id/removeAudio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/mergeButton"
+        android:layout_alignBottom="@+id/mergeButton"
+        android:layout_alignParentRight="true"
+        android:text="Remove Audio" />
 
 </RelativeLayout>
