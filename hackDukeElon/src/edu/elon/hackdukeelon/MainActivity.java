@@ -6,7 +6,11 @@
 package edu.elon.hackdukeelon;
 
 import java.io.File;
-import java.net.URI;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,7 +29,7 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -36,7 +40,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.view.View.OnClickListener;
 
 import com.netcompss.ffmpeg4android_client.BaseWizard;
 
@@ -48,10 +51,16 @@ public class MainActivity extends BaseWizard {
 	
 	private ListView songSegements;
 	private ArrayList<Clip> clipList = new ArrayList<Clip>();
-	private Button finalize; 
-	private boolean cancelled = false; 
+	private Button merge; 
+	private Button addMusic; 
 	private String clipName = ""; 
 	private int currClipPos = 0; 
+	
+	private final String AUDIO_REMOVED = "/sdcard/videokit/noAudio.mp4";
+    private final String SONG_ADDED = "/sdcard/videokit/withSong.mp4";
+    private final String MERGED_VIDEO = "/sdcard/videokit/merge.mp4";
+    private final String COMPILATION = "/sdcard/videokit/mylist.txt";
+    private final String SONG = "/sdcard/videokit/song.mp3";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +68,44 @@ public class MainActivity extends BaseWizard {
 		setContentView(R.layout.activity_main);
 		songSegements = (ListView) findViewById(R.id.list);
 		songSegements.setOnItemClickListener(clickListener);
-		songSegements.setOnItemLongClickListener(longClickListener); 
+		songSegements.setOnItemLongClickListener(longClickListener);  
 		
-		finalize = (Button) findViewById(R.id.finalizeButton); 
-		finalize.setOnClickListener(finalizeListener); 
-		updateList();
 		
+		
+		copyLicenseAndDemoFilesFromAssetsToSDIfNeeded();
+
+        try {
+                saveRawToSD();
+        } catch (Exception e) {
+                e.printStackTrace();
+        }
+        
+        merge = (Button) findViewById(R.id.mergeButton); 
+		merge.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				try {
+					createTextFile();
+				} catch (FileNotFoundException e) {
+					showDialog("Error", "Trouble writing the file!"); 
+				} 
+				compileVideos(); 
+				
+			}
+		});
+		
+        addMusic = (Button) findViewById(R.id.musicButton); 
+        addMusic.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				addAudio(); 
+				
+			}
+		}); 
+        
+        updateList();
 
 	}
 	
@@ -96,7 +137,8 @@ public class MainActivity extends BaseWizard {
 	    builder.setPositiveButton("Record", new DialogInterface.OnClickListener() { 
 	        @Override
 	        public void onClick(DialogInterface dialog, int which) {
-	        	clipName = input.getText().toString();  
+	        	clipName = input.getText().toString(); 
+	        	//clipList.get(currClipPos).setTitle(clipName); 
 	            //m_Text = input.getText().toString();
 	        	Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
 				
@@ -171,7 +213,7 @@ public class MainActivity extends BaseWizard {
 			}
 		}
 		
-		finalize.setEnabled(enable); 
+		merge.setEnabled(enable); 
 		
 		
 //		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -180,28 +222,29 @@ public class MainActivity extends BaseWizard {
 		songSegements.setAdapter(adapter);
 	}
 	
-	private OnClickListener finalizeListener = new OnClickListener() {
-		
-		@Override
-		public void onClick(View v) {
-			Toast.makeText(getApplicationContext(), "Finalize Clicked!", Toast.LENGTH_SHORT).show();
-		}
-	};
+//	private OnClickListener finalizeListener = new OnClickListener() {
+//		
+//		@Override
+//		public void onClick(View v) {
+//			Toast.makeText(getApplicationContext(), "Finalize Clicked!", Toast.LENGTH_SHORT).show();
+//		}
+//	};
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE) {
 	        if (resultCode == RESULT_OK) {
 	        	Clip current = clipList.get(currClipPos); 
-	        	String fileName = data.getDataString(); 
-	        	if(isGoodRecord(fileName, current.getDuration())) {
+	        	String fileName = clipList.get(currClipPos).getPath();//data.getDataString(); 
+	        	//if(isGoodRecord(fileName, current.getDuration())) {
 	        	current.setTitle(clipName); 
-	        	current.setPath(data.getDataString()); 
+	        	//current.setPath(data.getDataString()); 
+	        	current.setPath("/sdcard/videokit/"+clipName);
 	        	updateList(); 
-	        	} else {
+	        	//} else {
 	        		//Toast.makeText(this, "Invalid Length! Please record again!", Toast.LENGTH_LONG).show();
-	        		showDialog("Clip Not Saved", "You recorded a clip of an invaild length. \nPlease try again!"); 
-	        	}
+	        		//showDialog("Clip Not Saved", "You recorded a clip of an invaild length. \nPlease try again!"); 
+	        	//}
 	            // Video captured and saved to fileUri specified in the Intent
 //	            Toast.makeText(this, "Video saved to:\n" +
 //                     data.getDataString(), Toast.LENGTH_LONG).show();
@@ -214,7 +257,7 @@ public class MainActivity extends BaseWizard {
 	}
 	
 	private boolean isGoodRecord(String uri, int expectedDuration) { 
-		
+		Log.d("READ THIS!!!", "URI: "+uri); 
 		MediaPlayer mp = MediaPlayer.create(this, Uri.parse(uri)); 
 		int duration = mp.getDuration(); 
 		mp.release(); 
@@ -237,8 +280,9 @@ public class MainActivity extends BaseWizard {
 	    // To be safe, you should check that the SDCard is mounted
 	    // using Environment.getExternalStorageState() before doing this.
 
-	    File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
-	              Environment.DIRECTORY_PICTURES), "HackDukeVideo");
+//	    File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
+//	              Environment.DIRECTORY_PICTURES), "HackDukeVideo");
+		File mediaStorageDir = new File("/sdcard/videokit/");
 	    // This location works best if you want the created images to be shared
 	    // between applications and persist after your app has been uninstalled.
 
@@ -254,11 +298,15 @@ public class MainActivity extends BaseWizard {
 	    String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
 	    File mediaFile;
 	    if (type == MEDIA_TYPE_IMAGE){
-	        mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-	        "IMG_"+ timeStamp + ".jpg");
+//	        mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+//	        "IMG_"+ timeStamp + ".jpg");
+	    	mediaFile = new File(mediaStorageDir.getPath()+"/"+clipName+".mp4");
+	    	clipList.get(currClipPos).setPath(mediaFile.getPath()); 
 	    } else if(type == MEDIA_TYPE_VIDEO) {
-	        mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-	        "VID_"+ timeStamp + ".mp4");
+//	        mediaFile = new File(mediaStorageDir.getPath() + File.separator +
+//	        "VID_"+ timeStamp + ".mp4");
+	    	mediaFile = new File(mediaStorageDir.getPath()+"/"+clipName+".mp4");
+	    	clipList.get(currClipPos).setPath(mediaFile.getPath());
 	    } else {
 	        return null;
 	    }
@@ -291,5 +339,68 @@ public class MainActivity extends BaseWizard {
 	        return v;
 	    }
 	}
+	
+	private void compileVideos(){
+
+        String commandStr = "ffmpeg -f concat -i " + COMPILATION + " -c copy " + MERGED_VIDEO;
+
+        setCommand(commandStr);
+
+
+        setProgressDialogTitle("Compiling your music video!");
+        setProgressDialogMessage("Depends on your video size, it can take a few minutes");
+
+        setNotificationTitle("HackDuke Application");
+        setNotificationfinishedMessageTitle("Compiling finished");
+        setNotificationfinishedMessageDesc("Click to play demo");
+        setNotificationStoppedMessage("Demo Transcoding stopped");
+
+        runTranscoing();
+        
+}
+
+private void addAudio(){
+        //copyLicenseAndDemoFilesFromAssetsToSDIfNeeded();
+
+        String commandStr = "ffmpeg -i " + AUDIO_REMOVED + " -i " + SONG + " -map 0 -map 1 -codec copy -shortest " + SONG_ADDED;
+
+        setCommand(commandStr);
+
+
+        setProgressDialogTitle("Adding audio!");
+        setProgressDialogMessage("Depends on your video size, it can take a few minutes");
+        setNotificationTitle("HackDuke Application");
+        setNotificationfinishedMessageTitle("Audio added!");
+
+        runTranscoing();
+
+}
+
+private void saveRawToSD() throws IOException {
+
+        InputStream in = getResources().openRawResource(R.raw.song);
+        FileOutputStream out = new FileOutputStream(SONG);
+        byte[] buff = new byte[1024];
+        int read = 0;
+        try{
+                while((read = in.read(buff)) > 0){
+                        out.write(buff, 0, read);
+                }
+        }finally{
+                in.close();
+                out.close();
+        }
+        
+}
+
+private void createTextFile() throws FileNotFoundException {
+	PrintWriter writer = new PrintWriter(new File(COMPILATION)); 
+	for(Clip c: clipList) {
+		String txt = "file '"+c.getPath()+".mp4'"; 
+		writer.println(txt);  
+	}
+	writer.close(); 
+}
+
 
 }

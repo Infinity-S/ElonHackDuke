@@ -12,7 +12,7 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@+id/finalizeButton"
+        android:layout_above="@+id/mergeButton"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:animateLayoutChanges="true"
@@ -23,11 +23,21 @@
     </ListView>
 
     <Button
-        android:id="@+id/finalizeButton"
+        android:id="@+id/musicButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/list"
+        android:layout_toRightOf="@+id/mergeButton"
+        android:text="Add Music" />
+
+    <Button
+        android:id="@+id/mergeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/list"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Finalize" />
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="18dp"
+        android:text="Merge Videos" />
 
 </RelativeLayout>

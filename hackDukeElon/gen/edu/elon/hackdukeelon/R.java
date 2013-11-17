@@ -17,8 +17,8 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f060000;
-        public static final int activity_vertical_margin=0x7f060001;
+        public static final int activity_horizontal_margin=0x7f070000;
+        public static final int activity_vertical_margin=0x7f070001;
     }
     public static final class drawable {
         public static final int bg=0x7f020000;
@@ -27,28 +27,29 @@ public final class R {
         public static final int notification_icon=0x7f020003;
     }
     public static final class id {
-        public static final int CommandText=0x7f080006;
-        public static final int CommandTextView=0x7f080005;
-        public static final int ScrollView01=0x7f080004;
-        public static final int aboutButton=0x7f08000f;
-        public static final int about_content=0x7f080000;
-        public static final int action_settings=0x7f080015;
-        public static final int contactButton=0x7f08000e;
-        public static final int contact_us_content=0x7f080003;
-        public static final int del1=0x7f080008;
-        public static final int finalizeButton=0x7f080002;
-        public static final int invokeButton=0x7f080007;
-        public static final int license=0x7f08000a;
-        public static final int list=0x7f080001;
-        public static final int purchase=0x7f08000d;
-        public static final int showFileDone=0x7f080012;
-        public static final int showFileSend=0x7f080013;
-        public static final int showFileTitle1=0x7f080010;
-        public static final int showFileTitle2=0x7f080011;
-        public static final int showFiletextView1=0x7f080014;
-        public static final int showLastRunLogButton=0x7f080009;
-        public static final int space1=0x7f08000c;
-        public static final int startDemoAct=0x7f08000b;
+        public static final int CommandText=0x7f090007;
+        public static final int CommandTextView=0x7f090006;
+        public static final int ScrollView01=0x7f090005;
+        public static final int aboutButton=0x7f090010;
+        public static final int about_content=0x7f090000;
+        public static final int action_settings=0x7f090016;
+        public static final int contactButton=0x7f09000f;
+        public static final int contact_us_content=0x7f090004;
+        public static final int del1=0x7f090009;
+        public static final int invokeButton=0x7f090008;
+        public static final int license=0x7f09000b;
+        public static final int list=0x7f090001;
+        public static final int mergeButton=0x7f090002;
+        public static final int musicButton=0x7f090003;
+        public static final int purchase=0x7f09000e;
+        public static final int showFileDone=0x7f090013;
+        public static final int showFileSend=0x7f090014;
+        public static final int showFileTitle1=0x7f090011;
+        public static final int showFileTitle2=0x7f090012;
+        public static final int showFiletextView1=0x7f090015;
+        public static final int showLastRunLogButton=0x7f09000a;
+        public static final int space1=0x7f09000d;
+        public static final int startDemoAct=0x7f09000c;
     }
     public static final class layout {
         public static final int about_dialog=0x7f030000;
@@ -59,56 +60,59 @@ public final class R {
         public static final int show_file=0x7f030005;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
+        public static final int main=0x7f080000;
+    }
+    public static final class raw {
+        public static final int song=0x7f040000;
     }
     public static final class string {
-        public static final int FfmpegStatus=0x7f040009;
-        public static final int RemoteProcessStatus=0x7f040008;
-        public static final int aboutButton=0x7f040015;
-        public static final int about_email_button=0x7f040010;
-        public static final int about_email_content=0x7f040012;
-        public static final int about_email_subject=0x7f040011;
-        public static final int about_email_uri=0x7f040013;
-        public static final int action_settings=0x7f04002d;
-        public static final int app_name=0x7f040001;
-        public static final int bindButton=0x7f040004;
-        public static final int bitrate_invalid_message=0x7f04001c;
-        public static final int commandText=0x7f04000e;
-        public static final int commandTextView=0x7f04000d;
-        public static final int contactButton=0x7f040016;
-        public static final int dialog_error_title=0x7f040019;
-        public static final int getWorkerStatusButton=0x7f040007;
-        public static final int hello_world=0x7f04002e;
-        public static final int input_file_contains_spaces_message=0x7f04001a;
-        public static final int invokeButton=0x7f040006;
-        public static final int license=0x7f04000a;
-        public static final int notif_message_fail=0x7f04001e;
-        public static final int notif_message_ok=0x7f04001d;
-        public static final int notif_message_stopped=0x7f040020;
-        public static final int notif_message_stopping=0x7f04001f;
-        public static final int notif_progress_desc=0x7f040022;
-        public static final int notif_progress_title=0x7f040021;
-        public static final int notif_start_desc=0x7f040024;
-        public static final int notif_start_title=0x7f040023;
-        public static final int oem_license=0x7f040018;
-        public static final int output=0x7f04000f;
-        public static final int output_file_contains_spaces_message=0x7f04001b;
-        public static final int progress_dialog_message=0x7f04002c;
-        public static final int progress_dialog_title=0x7f04002b;
-        public static final int purchase=0x7f040017;
-        public static final int releaseButton=0x7f040005;
-        public static final int show_file_text=0x7f040027;
-        public static final int show_file_title1=0x7f040025;
-        public static final int show_file_title2=0x7f040026;
-        public static final int show_logs=0x7f040028;
-        public static final int startButton=0x7f040002;
-        public static final int startDemoAct=0x7f04000b;
-        public static final int stopButton=0x7f040003;
-        public static final int trascoding_running_background_message=0x7f04002a;
-        public static final int trascoding_running_message=0x7f040029;
-        public static final int ui_ok=0x7f040014;
-        public static final int welcome=0x7f040000;
-        public static final int welcome_demo=0x7f04000c;
+        public static final int FfmpegStatus=0x7f050009;
+        public static final int RemoteProcessStatus=0x7f050008;
+        public static final int aboutButton=0x7f050015;
+        public static final int about_email_button=0x7f050010;
+        public static final int about_email_content=0x7f050012;
+        public static final int about_email_subject=0x7f050011;
+        public static final int about_email_uri=0x7f050013;
+        public static final int action_settings=0x7f05002d;
+        public static final int app_name=0x7f050001;
+        public static final int bindButton=0x7f050004;
+        public static final int bitrate_invalid_message=0x7f05001c;
+        public static final int commandText=0x7f05000e;
+        public static final int commandTextView=0x7f05000d;
+        public static final int contactButton=0x7f050016;
+        public static final int dialog_error_title=0x7f050019;
+        public static final int getWorkerStatusButton=0x7f050007;
+        public static final int hello_world=0x7f05002e;
+        public static final int input_file_contains_spaces_message=0x7f05001a;
+        public static final int invokeButton=0x7f050006;
+        public static final int license=0x7f05000a;
+        public static final int notif_message_fail=0x7f05001e;
+        public static final int notif_message_ok=0x7f05001d;
+        public static final int notif_message_stopped=0x7f050020;
+        public static final int notif_message_stopping=0x7f05001f;
+        public static final int notif_progress_desc=0x7f050022;
+        public static final int notif_progress_title=0x7f050021;
+        public static final int notif_start_desc=0x7f050024;
+        public static final int notif_start_title=0x7f050023;
+        public static final int oem_license=0x7f050018;
+        public static final int output=0x7f05000f;
+        public static final int output_file_contains_spaces_message=0x7f05001b;
+        public static final int progress_dialog_message=0x7f05002c;
+        public static final int progress_dialog_title=0x7f05002b;
+        public static final int purchase=0x7f050017;
+        public static final int releaseButton=0x7f050005;
+        public static final int show_file_text=0x7f050027;
+        public static final int show_file_title1=0x7f050025;
+        public static final int show_file_title2=0x7f050026;
+        public static final int show_logs=0x7f050028;
+        public static final int startButton=0x7f050002;
+        public static final int startDemoAct=0x7f05000b;
+        public static final int stopButton=0x7f050003;
+        public static final int trascoding_running_background_message=0x7f05002a;
+        public static final int trascoding_running_message=0x7f050029;
+        public static final int ui_ok=0x7f050014;
+        public static final int welcome=0x7f050000;
+        public static final int welcome_demo=0x7f05000c;
     }
     public static final class style {
         /** 
@@ -132,13 +136,13 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f050003;
+        public static final int AppBaseTheme=0x7f060003;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f050004;
-        public static final int h1=0x7f050001;
-        public static final int h2=0x7f050002;
-        public static final int t1=0x7f050000;
+        public static final int AppTheme=0x7f060004;
+        public static final int h1=0x7f060001;
+        public static final int h2=0x7f060002;
+        public static final int t1=0x7f060000;
     }
 }

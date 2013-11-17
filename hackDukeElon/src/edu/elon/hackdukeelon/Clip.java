@@ -14,7 +14,7 @@ public class Clip{
 	private boolean recorded = false; 
 	
 	public Clip() {
-		duration = 15; 
+		duration = 5; 
 		title = "Empty Clip"; 
 		path = ""; 
 	}
