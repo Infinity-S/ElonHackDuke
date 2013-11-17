@@ -11,13 +11,23 @@
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/finalizeButton"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:animateLayoutChanges="true"
-        android:background="#000000"
+        android:background="#2AA7F5"
         android:fadeScrollbars="false"
         android:scrollbarStyle="outsideOverlay" >
+
     </ListView>
+
+    <Button
+        android:id="@+id/finalizeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Finalize" />
 
 </RelativeLayout>
